@@ -10,7 +10,10 @@ import java.io.PrintWriter;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import com.exr.cli.ExchangeRates.Utilities.UserInput;
 
 @SpringBootApplication
 public class ExchangeRatesApplication {
@@ -18,6 +21,10 @@ public class ExchangeRatesApplication {
 	public static void main(String[] args) {
 		exchangeRateMain();
 	}
+
+	@Autowired
+	static
+	UserInput userInput;
 
 	public static void exchangeRateMain(){
 		BlockingQueue<String> input = new LinkedBlockingQueue<>();
@@ -46,15 +53,7 @@ public class ExchangeRatesApplication {
 		} catch(IOException e){
 			System.err.println("Error");
 		}
-
-		//add or delete to file
-		try(BufferedWriter writer = new BufferedWriter(new FileWriter("rates.txt", true));
-			PrintWriter pw = new PrintWriter(writer)){
-			String content = input.take();
-			pw.println(content);
-		} catch(Exception ex){
-			System.err.println("Error");
-		}
+		userInput.addOrRemoveExistingRates(input);
 	}
 
 }
