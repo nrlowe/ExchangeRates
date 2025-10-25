@@ -1,25 +1,25 @@
 package com.exr.cli.ExchangeRates.Entity;
 
 public class ProgramState {
-    public static boolean isMenu;
-    public static boolean isCrudOperation;
-    public static boolean isConsumerState;
+    private boolean isMenu;
+    private boolean isCrudOperation;
+    private boolean isConsumerState;
 
     ProgramState(){
-        ProgramState.isMenu = true;
-        ProgramState.isCrudOperation = false;
-        ProgramState.isConsumerState = false;
+        this.isMenu = true;
+        this.isCrudOperation = false;
+        this.isConsumerState = false;
     }
 
-    public static void flipMenuState(){
-        ProgramState.isMenu = ProgramState.isMenu ? false : true;
+    public void flipMenuState(){
+        this.isMenu = this.isMenu ? false : true;
     }
 
-    public static void flipCrudOps(){
-        ProgramState.isCrudOperation = ProgramState.isCrudOperation ? false : true;
+    public void flipCrudOps(){
+        this.isCrudOperation = this.isCrudOperation ? false : true;
     }
 
-    public static void flipConsumerState(){
-        ProgramState.isConsumerState = ProgramState.isConsumerState ? false : true;
+    public void flipConsumerState(){
+        this.isConsumerState = this.isConsumerState ? false : true;
     }
 }
