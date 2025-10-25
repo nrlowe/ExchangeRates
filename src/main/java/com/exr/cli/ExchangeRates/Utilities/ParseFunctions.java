@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.concurrent.BlockingQueue;
 
 public class ParseFunctions {
     public void parseFileCRUD(){
@@ -19,7 +20,11 @@ public class ParseFunctions {
 		}
     }
 
-    public void parseUserInput(){
+    public void parseNewUserInput(BlockingQueue<String> input){
+        try{
+            
+        } catch(Exception ex){
 
+        }
     }
 }

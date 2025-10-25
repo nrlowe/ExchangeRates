@@ -1,9 +1,7 @@
 package com.exr.cli.ExchangeRates;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.concurrent.BlockingQueue;
@@ -11,6 +9,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
 
 import com.exr.cli.ExchangeRates.Utilities.UserInput;
 
@@ -20,10 +19,6 @@ public class ExchangeRatesApplication {
 	public static void main(String[] args) {
 		exchangeRateMain();
 	}
-
-	@Autowired
-	static
-	UserInput userInput;
 
 	public static void exchangeRateMain(){
 		BlockingQueue<String> input = new LinkedBlockingQueue<>();
@@ -50,9 +45,10 @@ public class ExchangeRatesApplication {
 				System.out.println(line);
 			}
 		} catch(IOException e){
-			System.err.println("Error");
+			System.err.println(e.getMessage());
 		}
-		userInput.addOrRemoveExistingRates(input);
+		//main menu selection?
+		UserInput.addOrRemoveExistingRates(input);
 	}
 
 }
