@@ -45,7 +45,7 @@ public class ExchangeRatesApplication {
 				System.out.println(line);
 			}
 		} catch(IOException e){
-			System.err.println(e.getMessage());
+			System.err.println(e);
 		}
 		//main menu selection?
 		UserInput.addOrRemoveExistingRates(input);
